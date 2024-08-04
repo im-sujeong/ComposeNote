@@ -33,7 +33,14 @@ class NotesViewModel @Inject constructor(
 
     fun onEvent(event: NotesEvent) {
         when(event) {
-            is NotesEvent.Order -> getNotes(event.noteOrder)
+            is NotesEvent.Order -> {
+                if(state.value.noteOrder::class.java == event.noteOrder::class.java
+                    && state.value.noteOrder.orderType == event.noteOrder.orderType) {
+                    return
+                }
+
+                getNotes(event.noteOrder)
+            }
             is NotesEvent.DeleteNote -> deleteNote(note = event.note)
             NotesEvent.RestoreNote -> restoreNote(note = recentlyDeleteNote)
             NotesEvent.ToggleOrderSection -> {
@@ -45,11 +52,6 @@ class NotesViewModel @Inject constructor(
     }
 
     private fun getNotes(noteOrder: NoteOrder) {
-        if(state.value.noteOrder::class.java == noteOrder::class.java
-            && state.value.noteOrder.orderType == noteOrder.orderType) {
-            return
-        }
-
         getNoteJob?.cancel()
         getNoteJob = noteUseCases.getNotesUseCase(noteOrder)
             .onEach {

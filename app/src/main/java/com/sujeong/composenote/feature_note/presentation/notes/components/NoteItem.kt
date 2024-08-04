@@ -12,6 +12,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,11 +29,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
-import com.sujeong.composenote.core.presentation.component.NoteText
 import com.sujeong.composenote.core.presentation.component.NoteTextStyle
 import com.sujeong.composenote.feature_note.domain.model.Note
 import com.sujeong.composenote.ui.theme.DarkGray
-import com.sujeong.composenote.ui.theme.LightGray
+import com.sujeong.composenote.ui.theme.Gray
 import com.sujeong.composenote.ui.theme.LightPink
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -86,19 +86,21 @@ fun NoteItem(
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            NoteText(
+            Text(
                 text = note.title,
+                color = DarkGray,
                 modifier = Modifier.padding(end = 32.dp),
-                noteTextStyle = NoteTextStyle.TITLE_SMALL
+                style = NoteTextStyle.TITLE_SMALL.toTextStyle()
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            NoteText(
+            Text(
                 text = note.content,
-                noteTextStyle = NoteTextStyle.BODY_SMALL,
+                color = DarkGray,
+                style = NoteTextStyle.BODY_SMALL.toTextStyle(),
                 textAlign = TextAlign.Justify,
-                maxLine = 2,
+                maxLines = 2,
                 overflow = TextOverflow.Ellipsis
             )
 
@@ -112,12 +114,12 @@ fun NoteItem(
                 modifier = Modifier.fillMaxWidth(),
                 contentAlignment = Alignment.CenterStart
             ) {
-                NoteText(
+                Text(
                     text = date,
-                    noteTextStyle = NoteTextStyle.LABEL,
+                    style = NoteTextStyle.LABEL.toTextStyle(),
                     textAlign = TextAlign.Justify,
-                    color = DarkGray,
-                    maxLine = 2,
+                    color = Gray,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
 

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ComposeNote</string>
+
+    <string name="add_edit_note_title_hint">제목을 입력해 주세요.</string>
+    <string name="add_edit_note_content_hint">내용을 입력해 주세요.</string>
+
+    <string name="add_edit_note_title_error">제목을 입력해 주세요!</string>
+    <string name="add_edit_note_content_error">내용을 입력해 주세요!</string>
+
+    <string name="add_edit_note_complete">저장 완료!</string>
 </resources>

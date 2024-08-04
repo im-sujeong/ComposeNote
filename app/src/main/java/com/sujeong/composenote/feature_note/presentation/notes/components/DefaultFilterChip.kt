@@ -4,12 +4,11 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -17,7 +16,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.sujeong.composenote.core.presentation.component.NoteText
 import com.sujeong.composenote.core.presentation.component.NoteTextStyle
 import com.sujeong.composenote.ui.theme.ComposeNoteTheme
 import com.sujeong.composenote.ui.theme.DarkGray
@@ -42,11 +40,11 @@ fun DefaultFilterChip(
         selected = selected,
         onClick = { onSelect() },
         label = {
-            NoteText(
+            Text(
                 text = text,
-                noteTextStyle = if(selected) {
-                    NoteTextStyle.LABEL_BOLD
-                } else NoteTextStyle.LABEL
+                style = if(selected) {
+                    NoteTextStyle.LABEL_BOLD.toTextStyle()
+                } else NoteTextStyle.LABEL.toTextStyle()
             )
         },
         leadingIcon = {

@@ -27,4 +27,7 @@ data class Note(
     }
 }
 
-class InvalidNoteException(message: String): Exception(message)
+sealed class InvalidNoteException: Exception() {
+    data object EmptyTitle: InvalidNoteException()
+    data object EmptyContent: InvalidNoteException()
+}
