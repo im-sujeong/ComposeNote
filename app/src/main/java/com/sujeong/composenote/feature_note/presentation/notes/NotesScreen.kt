@@ -150,7 +150,12 @@ fun NotesScreen(
                 verticalArrangement = Arrangement.spacedBy(12.dp),
                 contentPadding = PaddingValues(bottom = 16.dp)
             ) {
-                items(state.notes) { note ->
+                items(
+                    items = state.notes,
+                    key = {
+                        it.id!!
+                    }
+                ) { note ->
                     NoteItem(
                         note = note,
                         modifier = Modifier
